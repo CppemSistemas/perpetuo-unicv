@@ -101,7 +101,7 @@
       text-shadow:0 1px 0 rgba(255,255,255,.6);
       margin-bottom:12px;
     }
-    .headline .hl{color:#c2820a}
+    .headline .hl{color:#c2820a;white-space:nowrap}
     .sub{
       color:#3f5a23;
       font-size:clamp(15px,2.4vw,18px);
@@ -323,7 +323,7 @@
       <p class="note">Cadastro gratuito. Seus dados estão seguros.</p>
       <p class="success" id="form-success" role="status" hidden>
         ✅ Cadastro recebido!<br />
-        Em breve nossa equipe entrará em contato com as condições da pré-venda.
+        Você será redirecionado ao WhatsApp em <strong><span id="countdown">3</span>s</strong>...
       </p>
     </form>
 
@@ -331,8 +331,31 @@
     <section class="social">
       <span class="social__eyebrow">Nossos formados</span>
       <div class="carousel" aria-label="Fotos de formados da UniCV">
-        <ul class="carousel__track" id="carousel-track">
-          <!-- itens inseridos via JS (sequência + cópia para loop infinito) -->
+        <ul class="carousel__track">
+          <!-- sequência principal -->
+          <li class="carousel__item"><img src="public/formados/formados.webp"        width="220" height="280" loading="eager" decoding="async" draggable="false" alt="Formado(a) da UniCV" /></li>
+          <li class="carousel__item"><img src="public/formados/formados1.webp"       width="220" height="280" loading="eager" decoding="async" draggable="false" alt="Formado(a) da UniCV" /></li>
+          <li class="carousel__item"><img src="public/formados/formados2.webp"       width="220" height="280" loading="eager" decoding="async" draggable="false" alt="Formado(a) da UniCV" /></li>
+          <li class="carousel__item"><img src="public/formados/formados3.webp"       width="220" height="280" loading="eager" decoding="async" draggable="false" alt="Formado(a) da UniCV" /></li>
+          <li class="carousel__item"><img src="public/formados/formados4.webp"       width="220" height="280" loading="eager" decoding="async" draggable="false" alt="Formado(a) da UniCV" /></li>
+          <li class="carousel__item"><img src="public/formados/formados5.webp"       width="220" height="280" loading="eager" decoding="async" draggable="false" alt="Formado(a) da UniCV" /></li>
+          <li class="carousel__item"><img src="public/formados/formados6.webp"       width="220" height="280" loading="eager" decoding="async" draggable="false" alt="Formado(a) da UniCV" /></li>
+          <li class="carousel__item"><img src="public/formados/formados1%20(1).webp" width="220" height="280" loading="eager" decoding="async" draggable="false" alt="Formado(a) da UniCV" /></li>
+          <li class="carousel__item"><img src="public/formados/formados1%20(5).webp" width="220" height="280" loading="eager" decoding="async" draggable="false" alt="Formado(a) da UniCV" /></li>
+          <li class="carousel__item"><img src="public/formados/formados1%20(6).webp" width="220" height="280" loading="eager" decoding="async" draggable="false" alt="Formado(a) da UniCV" /></li>
+          <li class="carousel__item"><img src="public/formados/formados1%20(8).webp" width="220" height="280" loading="eager" decoding="async" draggable="false" alt="Formado(a) da UniCV" /></li>
+          <!-- cópia oculta para o loop infinito (translateX -50%) -->
+          <li class="carousel__item" aria-hidden="true"><img src="public/formados/formados.webp"        width="220" height="280" loading="eager" decoding="async" draggable="false" alt="" /></li>
+          <li class="carousel__item" aria-hidden="true"><img src="public/formados/formados1.webp"       width="220" height="280" loading="eager" decoding="async" draggable="false" alt="" /></li>
+          <li class="carousel__item" aria-hidden="true"><img src="public/formados/formados2.webp"       width="220" height="280" loading="eager" decoding="async" draggable="false" alt="" /></li>
+          <li class="carousel__item" aria-hidden="true"><img src="public/formados/formados3.webp"       width="220" height="280" loading="eager" decoding="async" draggable="false" alt="" /></li>
+          <li class="carousel__item" aria-hidden="true"><img src="public/formados/formados4.webp"       width="220" height="280" loading="eager" decoding="async" draggable="false" alt="" /></li>
+          <li class="carousel__item" aria-hidden="true"><img src="public/formados/formados5.webp"       width="220" height="280" loading="eager" decoding="async" draggable="false" alt="" /></li>
+          <li class="carousel__item" aria-hidden="true"><img src="public/formados/formados6.webp"       width="220" height="280" loading="eager" decoding="async" draggable="false" alt="" /></li>
+          <li class="carousel__item" aria-hidden="true"><img src="public/formados/formados1%20(1).webp" width="220" height="280" loading="eager" decoding="async" draggable="false" alt="" /></li>
+          <li class="carousel__item" aria-hidden="true"><img src="public/formados/formados1%20(5).webp" width="220" height="280" loading="eager" decoding="async" draggable="false" alt="" /></li>
+          <li class="carousel__item" aria-hidden="true"><img src="public/formados/formados1%20(6).webp" width="220" height="280" loading="eager" decoding="async" draggable="false" alt="" /></li>
+          <li class="carousel__item" aria-hidden="true"><img src="public/formados/formados1%20(8).webp" width="220" height="280" loading="eager" decoding="async" draggable="false" alt="" /></li>
         </ul>
       </div>
     </section>
@@ -341,115 +364,10 @@
 
   <!-- 4. RODAPÉ — selos -->
   <footer class="footer">
-    <img class="seal-notamaxima" src="public/notamaxima.png" alt="Nota máxima 5 no MEC" loading="lazy" />
-    <img class="seal-mec" src="public/Reconhecimento MEC.png" alt="Reconhecido pelo MEC" loading="lazy" />
+    <img class="seal-notamaxima" src="public/notamaxima.png" alt="Nota máxima 5 no MEC" loading="eager" decoding="async" />
+    <img class="seal-mec" src="public/Reconhecimento MEC.png" alt="Reconhecido pelo MEC" loading="eager" decoding="async" />
   </footer>
 
-  <script>
-    /* ===== Carrossel: monta itens + cópia para loop infinito ===== */
-    (function(){
-      var fotos = [
-        'public/formados/formados.webp',
-        'public/formados/formados1.webp',
-        'public/formados/formados2.webp',
-        'public/formados/formados3.webp',
-        'public/formados/formados4.webp',
-        'public/formados/formados5.webp',
-        'public/formados/formados6.webp',
-        'public/formados/formados1 (1).webp',
-        'public/formados/formados1 (5).webp',
-        'public/formados/formados1 (6).webp',
-        'public/formados/formados1 (8).webp'
-      ];
-      var track = document.getElementById('carousel-track');
-      if(!track) return;
-
-      function buildItem(src, hidden){
-        var li = document.createElement('li');
-        li.className = 'carousel__item';
-        if(hidden) li.setAttribute('aria-hidden','true');
-        var img = document.createElement('img');
-        img.src = encodeURI(src);
-        img.width = 300; img.height = 380;
-        img.loading = 'eager';
-        img.decoding = 'async';
-        img.draggable = false;
-        img.alt = hidden ? '' : 'Formado(a) da UniCV';
-        li.appendChild(img);
-        return li;
-      }
-
-      // sequência original + cópia oculta (garante loop contínuo a -50%)
-      fotos.forEach(function(s){ track.appendChild(buildItem(s, false)); });
-      fotos.forEach(function(s){ track.appendChild(buildItem(s, true)); });
-    })();
-
-    /* ===== Máscara de telefone (00) 00000-0000 ===== */
-    (function(){
-      var tel = document.getElementById('telefone');
-      if(!tel) return;
-      tel.addEventListener('input', function(){
-        var v = tel.value.replace(/\D/g,'').slice(0,11);
-        if(v.length > 6){
-          tel.value = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
-        } else if(v.length > 2){
-          tel.value = '(' + v.slice(0,2) + ') ' + v.slice(2);
-        } else if(v.length > 0){
-          tel.value = '(' + v;
-        } else {
-          tel.value = '';
-        }
-      });
-    })();
-
-    /* ===== Validação + envio ===== */
-    (function(){
-      var form = document.getElementById('lead-form');
-      if(!form) return;
-      var btn = document.getElementById('lead-submit');
-      var success = document.getElementById('form-success');
-
-      function setError(name, msg){
-        var field = form.querySelector('[name="'+name+'"]').closest('.field');
-        var span = form.querySelector('[data-error-for="'+name+'"]');
-        if(msg){ field.classList.add('invalid'); span.textContent = msg; }
-        else { field.classList.remove('invalid'); span.textContent = ''; }
-      }
-
-      function validate(){
-        var ok = true;
-        var nome = form.nome.value.trim();
-        var email = form.email.value.trim();
-        var tel = form.telefone.value.replace(/\D/g,'');
-        var esc = form.escolaridade.value;
-
-        if(nome.length < 3){ setError('nome','Informe seu nome completo.'); ok = false; } else setError('nome','');
-        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ setError('email','Informe um e-mail válido.'); ok = false; } else setError('email','');
-        if(tel.length < 10){ setError('telefone','Informe um telefone válido com DDD.'); ok = false; } else setError('telefone','');
-        if(!esc){ setError('escolaridade','Selecione a escolaridade.'); ok = false; } else setError('escolaridade','');
-        return ok;
-      }
-
-      form.addEventListener('submit', function(e){
-        e.preventDefault();
-        if(!validate()) return;
-
-        btn.disabled = true;
-        btn.textContent = 'ENVIANDO...';
-
-        // Evento de conversão do Meta Pixel
-        if(typeof fbq === 'function'){
-          fbq('track', 'Lead', { content_name: 'Pre-venda UniCV Caruaru' });
-        }
-
-        // TODO: integrar com endpoint/CRM. Por ora, confirma o cadastro.
-        setTimeout(function(){
-          form.querySelectorAll('.field, .note').forEach(function(el){ el.style.display = 'none'; });
-          btn.style.display = 'none';
-          success.hidden = false;
-        }, 600);
-      });
-    })();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
