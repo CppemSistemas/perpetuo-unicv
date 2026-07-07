@@ -15,22 +15,6 @@ const WHATSAPP_NUM = "5581973105354";
 const WHATSAPP_MSG = "Olá! Acabei de me cadastrar na pré-venda da UniCV e quero saber mais sobre as condições.";
 const REDIRECT_SEG = 3; // segundos antes de abrir o WhatsApp
 
-/* O carrossel é HTML estático no index.html (carrega cedo, sem depender deste JS). */
-
-/* ---------- Máscara: (00) 00000-0000 ---------- */
-const telefoneInput = document.getElementById("telefone");
-if (telefoneInput) {
-  telefoneInput.addEventListener("input", () => {
-    const v = telefoneInput.value.replace(/\D/g, "").slice(0, 11);
-    let out = "";
-    if (v.length > 0) out = "(" + v.slice(0, 2);
-    if (v.length >= 2) out += ") ";
-    if (v.length > 2) out += v.slice(2, 7);
-    if (v.length > 7) out += "-" + v.slice(7, 11);
-    telefoneInput.value = out;
-  });
-}
-
 /* ---------- Validação ---------- */
 const form = document.getElementById("lead-form");
 
@@ -96,6 +80,23 @@ if (form) {
       // Evento de conversão do Meta Pixel
       if (typeof fbq !== "undefined") {
         fbq("track", "Lead", { content_name: "Pre-venda UniCV Caruaru" });
+      }
+
+      // Evento de Lead do Pixel X (disparado antes do redirect para o WhatsApp)
+      if (window.pixel_x_app && typeof window.pixel_x_app.send_event === "function") {
+        try {
+          await window.pixel_x_app.send_event({
+            // Evento
+            event_name: "Lead",
+
+            // Lead
+            lead_name: payload.nome,
+            lead_email: payload.email,
+            lead_phone: payload.telefone,
+          });
+        } catch (_) {
+          /* não bloqueia o fluxo de sucesso/redirect */
+        }
       }
 
       // Estado de sucesso: oculta o formulário e mostra a confirmação
